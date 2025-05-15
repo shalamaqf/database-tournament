@@ -27,6 +27,7 @@ rename column name to player_name;
 
 select * from player;
 select * from tournament;
+select * from registration;
 
 insert into player(player_name, email)
 values('Adam', 'adam@gmail.com'),
@@ -46,5 +47,15 @@ values('IEM', 'Katowice', '2025-06-01 15:00:00'),
 /* insert into tournament(tournament_name, location, tournament_date)
 values('IEM', 'Dallas', '2025-02-01 15:00:00'); */
 
+insert into registration(id_player, id_tournament)
+values(1, 3),
+      (3, 2),
+      (4, 3);
 
+insert into registration(id_player, id_tournament)
+values(1, 2);
+
+/* insert into registration(id_player, id_tournament)
+values(5, 2),
+      (5, 2); */
       
