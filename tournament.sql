@@ -10,7 +10,7 @@ create table tournament
     id_tournament serial primary key,
     tournament_name varchar(100) not null,
     location varchar(100) not null,
-    tournament_date timestamp default current_timestamp check (tournament_date > current_timestamp)
+    tournament_date timestamp not null check (tournament_date > current_timestamp)
 );
 
 create table registration
@@ -26,6 +26,7 @@ alter table player
 rename column name to player_name;
 
 select * from player;
+select * from tournament;
 
 insert into player(player_name, email)
 values('Adam', 'adam@gmail.com'),
@@ -36,3 +37,14 @@ values('Adam', 'adam@gmail.com'),
 
 /* insert into player(player_name, email)
 values('Bill', 'mike@gmail.com'); */
+
+insert into tournament(tournament_name, location, tournament_date)
+values('IEM', 'Katowice', '2025-06-01 15:00:00'),
+      ('VCT', 'Toronto', '2025-12-01 16:30:00');
+
+
+/* insert into tournament(tournament_name, location, tournament_date)
+values('IEM', 'Dallas', '2025-02-01 15:00:00'); */
+
+
+      
