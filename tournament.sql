@@ -1,3 +1,4 @@
+--create a table for player
 create table player
 (
     id_player serial primary key,
@@ -5,6 +6,7 @@ create table player
     email varchar(100) not null unique
 );
 
+-- create a table for tournament
 create table tournament
 (
     id_tournament serial primary key,
@@ -13,6 +15,7 @@ create table tournament
     tournament_date timestamp not null check (tournament_date > current_timestamp)
 );
 
+-- create a table for registration
 create table registration
 (
     id_player int not null,
@@ -22,13 +25,17 @@ create table registration
     constraint fk_tournament foreign key (id_tournament) references tournament(id_tournament)
 );
 
+-- rename column name in player table
 alter table player
 rename column name to player_name;
 
+
+-- select queries for the table
 select * from player;
 select * from tournament;
 select * from registration;
 
+-- insert some values to player table
 insert into player(player_name, email)
 values('Adam', 'adam@gmail.com'),
       ('Jake', 'jake@gmail.com'),
@@ -39,6 +46,8 @@ values('Adam', 'adam@gmail.com'),
 /* insert into player(player_name, email)
 values('Bill', 'mike@gmail.com'); */
 
+
+-- insert some values to tournament table
 insert into tournament(tournament_name, location, tournament_date)
 values('IEM', 'Katowice', '2025-06-01 15:00:00'),
       ('VCT', 'Toronto', '2025-12-01 16:30:00');
@@ -50,6 +59,8 @@ values('ESL', 'Prague', '2025-07-01 17:00:00');
 /* insert into tournament(tournament_name, location, tournament_date)
 values('IEM', 'Dallas', '2025-02-01 15:00:00'); */
 
+
+-- insert some values to registration table
 insert into registration(id_player, id_tournament)
 values(1, 3),
       (3, 2),
@@ -61,6 +72,7 @@ values(1, 2);
 /* insert into registration(id_player, id_tournament)
 values(5, 2),
       (5, 2); */
+
 
 -- we will use inner join --
 select player.player_name, tournament.tournament_name, tournament_date, tournament.location
@@ -84,5 +96,4 @@ select player.player_name, tournament.tournament_name, tournament_date, tourname
 from registration
 full join player on registration.id_player = player.id_player
 full join tournament on registration.id_tournament = tournament.id_tournament;
-
 
