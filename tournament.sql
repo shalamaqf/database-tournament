@@ -43,6 +43,9 @@ insert into tournament(tournament_name, location, tournament_date)
 values('IEM', 'Katowice', '2025-06-01 15:00:00'),
       ('VCT', 'Toronto', '2025-12-01 16:30:00');
 
+insert into tournament(tournament_name, location, tournament_date)
+values('ESL', 'Prague', '2025-07-01 17:00:00');
+
 
 /* insert into tournament(tournament_name, location, tournament_date)
 values('IEM', 'Dallas', '2025-02-01 15:00:00'); */
@@ -58,4 +61,28 @@ values(1, 2);
 /* insert into registration(id_player, id_tournament)
 values(5, 2),
       (5, 2); */
-      
+
+-- we will use inner join --
+select player.player_name, tournament.tournament_name, tournament_date, tournament.location
+from registration
+inner join player on registration.id_player = player.id_player
+inner join tournament on registration.id_tournament = tournament.id_tournament;
+
+
+-- try some joins --
+select player.player_name, tournament.tournament_name, tournament_date, tournament.location
+from registration
+left join player on registration.id_player = player.id_player
+left join tournament on registration.id_tournament = tournament.id_tournament;
+
+select player.player_name, tournament.tournament_name, tournament_date, tournament.location
+from registration
+right join player on registration.id_player = player.id_player
+right join tournament on registration.id_tournament = tournament.id_tournament;
+
+select player.player_name, tournament.tournament_name, tournament_date, tournament.location
+from registration
+full join player on registration.id_player = player.id_player
+full join tournament on registration.id_tournament = tournament.id_tournament;
+
+
