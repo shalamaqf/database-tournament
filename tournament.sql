@@ -21,3 +21,6 @@ create table registration
     constraint fk_player foreign key (id_player) references player(id_player),
     constraint fk_tournament foreign key (id_tournament) references tournament(id_tournament)
 );
+
+alter table player
+rename column name to player_name;
