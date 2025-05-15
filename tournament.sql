@@ -1,7 +1,7 @@
 create table player
 (
     id_player serial primary key,
-    name varchar(100) not null,
+    player_name varchar(100) not null,
     email varchar(100) not null unique
 );
 
@@ -24,3 +24,15 @@ create table registration
 
 alter table player
 rename column name to player_name;
+
+select * from player;
+
+insert into player(player_name, email)
+values('Adam', 'adam@gmail.com'),
+      ('Jake', 'jake@gmail.com'),
+      ('Fred', 'fred@gmail.com'),
+      ('Mike', 'mike@gmail.com'),
+      ('Tony', 'tony@gmail.com');
+
+/* insert into player(player_name, email)
+values('Bill', 'mike@gmail.com'); */
